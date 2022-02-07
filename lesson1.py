@@ -10,6 +10,10 @@ print("packages imported")
 # Write a function to help Bob locate the card.
 
 # WRITE MAIN SOLUTION FUNCTION HERE
+def locate_card_binary(cards, query):
+    pass
+
+
 def locate_card_linear(cards, query):
     position = 0
 
