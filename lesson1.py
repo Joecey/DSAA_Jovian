@@ -1,4 +1,6 @@
 import math
+import time
+# start_time = time.process_time()
 
 print("packages imported")
 
@@ -8,14 +10,35 @@ print("packages imported")
 # Write a function to help Bob locate the card.
 
 # WRITE MAIN SOLUTION FUNCTION HERE
-def locate_card(cards, query):
-    pass
+def locate_card_linear(cards, query):
+    position = 0
+
+    # check if cards is empty
+    if cards == []:
+        return -1
+
+    else:
+    # loop for repition
+        while True:
+            if cards[position] == query:
+
+                # answer found
+                return position
+
+            # increment
+            position += 1
+
+            # if reached end but not found, return -1
+            if position == len(cards):
+
+                return -1
 
 # TESTS
 # cards does not contain query
 tests = []
 # Dictionaries (you can do subdictionary inside a dictionary)
 # Example test
+
 tests.append({
     'input': {
         'cards': [13, 11, 10, 7, 4, 3, 1, 0],
@@ -74,6 +97,11 @@ tests.append({
 tests_num = len(tests)
 
 for i in range(0, tests_num):
-    print(locate_card(**tests[i]['input']) == tests[i]['output'])
+    print(locate_card_linear(**tests[i]['input']))
+    print(locate_card_linear(**tests[i]['input']) == tests[i]['output'])
+
 
 # print(locate_card(**test['input']) == test['output'])
+
+# Check execution time
+print("--- %s seconds ---" % (time.process_time()))
