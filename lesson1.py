@@ -1,5 +1,6 @@
 import math
 import time
+# import datetime
 # start_time = time.process_time()
 
 print("packages imported")
@@ -11,10 +12,36 @@ print("packages imported")
 
 # WRITE MAIN SOLUTION FUNCTION HERE
 def locate_card_binary(cards, query):
-    pass
+    # O(log N) time complexity
+
+    # check if cards is not empty
+    if cards == []:
+        return -1
+
+    else:
+
+        # setup lo and hi values (far left and far right initial parameters
+        lo, hi = 0, len(cards)
+
+        # while lo is less than or equal to high
+        while lo <= hi:
+            mid_pos = (lo+hi) // 2 # integer division
+            mid_number = cards[mid_pos]
+
+            # check where mid number is relative to query
+            if mid_number == query:
+                return  mid_pos
+            elif mid_number < query:    # not on the right side of mid (AND also not mid)
+                hi = mid_pos - 1
+            elif mid_number > query:
+                lo = mid_pos + 1
+
+        # if none of the above is not possible
+        return -1
 
 
 def locate_card_linear(cards, query):
+    # O(N) time complexity
     position = 0
 
     # check if cards is empty
@@ -98,11 +125,15 @@ tests.append({
 
 # Test solution here
 # print(tests)
+# start_time = datetime.datetime.now()
 tests_num = len(tests)
 
 for i in range(0, tests_num):
-    print(locate_card_linear(**tests[i]['input']))
-    print(locate_card_linear(**tests[i]['input']) == tests[i]['output'])
+    # print(locate_card_linear(**tests[i]['input']))
+    # print(locate_card_linear(**tests[i]['input']) == tests[i]['output'])
+
+    print(locate_card_binary(**tests[i]['input']))
+    print(locate_card_binary(**tests[i]['input']) == tests[i]['output'])
 
 
 # print(locate_card(**test['input']) == test['output'])
