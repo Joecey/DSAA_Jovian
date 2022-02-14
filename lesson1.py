@@ -108,4 +108,5 @@ for i in range(0, tests_num):
 # print(locate_card(**test['input']) == test['output'])
 
 # Check execution time
+# test
 print("--- %s seconds ---" % (time.process_time()))
