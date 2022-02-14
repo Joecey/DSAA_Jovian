@@ -1,5 +1,6 @@
 import math
 import time
+import jovian
 # import datetime
 # start_time = time.process_time()
 
@@ -140,4 +141,5 @@ for i in range(0, tests_num):
 
 # Check execution time
 # test 2
-print("--- %s seconds ---" % (time.process_time()))
+from jovian.pythondsa import evaluate_test_cases
+evaluate_test_cases(locate_card_binary, tests)

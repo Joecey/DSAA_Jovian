@@ -3,6 +3,9 @@
 # jovian project can be found here: https://jovian.ai/joecey/python-binary-search-assignment
 
 import jovian
+import math
+import time
+
 print("packages imported")
 
 project='python-binary-search-assignment'
@@ -12,4 +15,92 @@ jovian.commit(project=project, privacy='secret', environment=None)
 # rotating a list = taking number at end of list and putting it to the front
 
 # for a sorted list and a given list, figure out how many rotations it took to
-# turn the given list into the sorted list
+# turn the sorted list into the given list
+
+# input nums = array of given list
+# output rotations = number of rotations it took
+
+# if array is not sorted, there will always be a number larger than the original number
+
+# function --> take given list
+    # test if array is sorted
+    # rotations = 0
+    # array = not sorted
+
+        # while array not sorted
+        # get middle number and take left section (make note of middle number)
+            # set test = 0
+            # set left to index 0, set right to index (middle - 1)
+
+            # if left < right
+                # get middle number of left side
+                # if new middle < original middle
+                    # continue
+
+                # else
+                    # bring index 0 to end (given.sort(key=given[0].__eq__))
+                    # rotation +1
+
+            # else
+                # array is sorted
+
+    # return rotations
+
+# Function
+def count_rotations_binary(nums):
+    given = nums
+
+    rotations = 0
+    array_sorted = False
+
+    # get middle value of given
+    og_mid_pos = (0 + len(given)) // 2
+    og_mid = given[og_mid_pos]
+
+    left, right = 0, (og_mid_pos - 1)
+
+    while not array_sorted:
+
+        test_mid_pos = (left+right) // 2
+        test_num = given[test_mid_pos]
+
+        if test_mid_pos == 0:
+            array_sorted = True
+
+        else:
+            # check if number left and right of middle test are less than and greater than respectively
+            if (given[test_mid_pos-1] < test_num) and (given[test_mid_pos+1] > test_num):
+                # continue with this current iteration
+                right = test_mid_pos
+
+            else:
+                # bigger number at end, use rotation
+                given.sort(key=given[0].__eq__)
+                rotations = rotations + 1
+                right = og_mid_pos
+
+        # print(given)
+
+    return rotations
+
+
+# demo test
+tests =[]
+
+tests.append({
+    'input': {
+        'nums': [19, 25, 29, 3, 5, 6, 7, 9, 11, 14]
+    },
+    'output': 3
+}
+)
+
+nums0 = tests[0]['input']['nums']
+output0 = tests[0]['output']
+result0 = count_rotations_binary(nums0)
+
+print(result0, result0 == output0)
+
+# from jovian.pythondsa import evaluate_test_cases
+# evaluate_test_cases(count_rotations_binary, tests)
+# evaluation tests
