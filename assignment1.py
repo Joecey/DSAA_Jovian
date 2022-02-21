@@ -47,6 +47,32 @@ jovian.commit(project=project, privacy='secret', environment=None)
     # return rotations
 
 # Function
+def count_rotations_linear(nums):
+    given = nums
+    print(given)
+    sort = False
+    rotations = 0
+    i = 0
+
+    while not sort:
+
+        if given[i] < given[i+1]:
+            i = i + 1
+
+        else:
+            # move 1st to last position
+            given.sort(key=given[0].__eq__)
+            i = 0
+            rotations = rotations +1
+
+        if i == (len(given)):
+            sort = True
+
+        else:
+            continue
+
+    return rotations
+
 def count_rotations_binary(nums):
     given = nums
 
@@ -87,17 +113,27 @@ def count_rotations_binary(nums):
 # demo test
 tests =[]
 
-tests.append({
+test0 = {
     'input': {
         'nums': [19, 25, 29, 3, 5, 6, 7, 9, 11, 14]
     },
     'output': 3
 }
-)
 
-nums0 = tests[0]['input']['nums']
-output0 = tests[0]['output']
-result0 = count_rotations_binary(nums0)
+### full tests ###
+# A list of size 8 rotated 5 times.
+test1 = {
+    'input': {
+        'nums': [6,7,8,1,2,3,4,5]
+    },
+    'output': 3
+}
+
+### full tests ###
+
+nums0 = test0['input']['nums']
+output0 = test0['output']
+result0 = count_rotations_linear(nums0)
 
 print(result0, result0 == output0)
 
