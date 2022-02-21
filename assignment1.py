@@ -55,7 +55,6 @@ def count_rotations_linear(nums):
     i = 0
 
     while not sort:
-
         if given[i] < given[i+1]:
             i = i + 1
 
@@ -65,7 +64,7 @@ def count_rotations_linear(nums):
             i = 0
             rotations = rotations +1
 
-        if i == (len(given)):
+        if i == (len(given) - 1):
             sort = True
 
         else:
