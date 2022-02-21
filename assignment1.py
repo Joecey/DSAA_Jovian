@@ -110,7 +110,6 @@ def count_rotations_binary(nums):
 
 
 # demo test
-tests =[]
 
 test0 = {
     'input': {
@@ -123,19 +122,30 @@ test0 = {
 # A list of size 8 rotated 5 times.
 test1 = {
     'input': {
-        'nums': [6,7,8,1,2,3,4,5]
+        'nums': [4,5,6,7,8,1,2,3]
     },
-    'output': 3
+    'output': 5
 }
+
+null_test = {
+    'input': {
+        'nums': [1,1,1,1]
+    },
+    'output': 0
+}
+
+tests =[test0, test1]
 
 ### full tests ###
 
-nums0 = test0['input']['nums']
-output0 = test0['output']
+nums0 = test1['input']['nums']
+output0 = test1['output']
 result0 = count_rotations_linear(nums0)
 
 print(result0, result0 == output0)
 
-# from jovian.pythondsa import evaluate_test_cases
-# evaluate_test_cases(count_rotations_binary, tests)
+from jovian.pythondsa import evaluate_test_case
+
+for i in range(0, len(tests)):
+    evaluate_test_case(count_rotations_linear, tests[i])
 # evaluation tests
