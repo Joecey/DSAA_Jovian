@@ -122,9 +122,9 @@ test0 = {
 # A list of size 8 rotated 5 times.
 test1 = {
     'input': {
-        'nums': [4,5,6,7,8,1,2,3]
+        'nums': [14, 19, 25, 29, 3, 5, 6, 7, 9, 11]
     },
-    'output': 5
+    'output': 4
 }
 
 null_test = {
@@ -138,14 +138,18 @@ tests =[test0, test1]
 
 ### full tests ###
 
-nums0 = test1['input']['nums']
-output0 = test1['output']
-result0 = count_rotations_linear(nums0)
+# nums0 = test1['input']['nums']
+# output0 = test1['output']
+# result0 = count_rotations_linear(nums0)
 
-print(result0, result0 == output0)
+# print(result0, result0 == output0)
 
 from jovian.pythondsa import evaluate_test_case
 
 for i in range(0, len(tests)):
     evaluate_test_case(count_rotations_linear, tests[i])
 # evaluation tests
+#     nums = tests[i]['input']['nums']
+#     output = tests[i]['output']
+#     result = count_rotations_linear(nums)
+#     print(result, result == output)
