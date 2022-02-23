@@ -54,21 +54,25 @@ def count_rotations_linear(nums):
     rotations = 0
     i = 0
 
-    while not sort:
-        if given[i] < given[i+1]:
-            i = i + 1
+    # test if list is empty
+    if given == []:
+        rotations = 0
+    else:
+        while not sort:
+            if given[i] < given[i+1]:
+                i = i + 1
 
-        else:
-            # move 1st to last position
-            given.sort(key=given[0].__eq__)
-            i = 0
-            rotations = rotations +1
+            else:
+                # move 1st to last position
+                given.sort(key=given[0].__eq__)
+                i = 0
+                rotations = rotations +1
 
-        if i == (len(given) - 1):
-            sort = True
+            if i == (len(given) - 1):
+                sort = True
 
-        else:
-            continue
+            else:
+                continue
 
     return rotations
 
@@ -127,14 +131,16 @@ test1 = {
     'output': 4
 }
 
-null_test = {
+# empty list
+test2 = {
     'input': {
-        'nums': [1,1,1,1]
+        'nums': []
     },
     'output': 0
 }
 
-tests =[test0, test1]
+
+tests =[test0, test1, test2]
 
 ### full tests ###
 
