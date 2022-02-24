@@ -57,6 +57,7 @@ def count_rotations_linear(nums):
     # test if list is empty
     if given == []:
         rotations = 0
+
     else:
         while not sort:
             if given[i] < given[i+1]:
@@ -113,8 +114,7 @@ def count_rotations_binary(nums):
     return rotations
 
 
-# demo test
-
+# TEST CASES
 test0 = {
     'input': {
         'nums': [19, 25, 29, 3, 5, 6, 7, 9, 11, 14]
@@ -122,7 +122,6 @@ test0 = {
     'output': 3
 }
 
-### full tests ###
 # A list of size 8 rotated 5 times.
 test1 = {
     'input': {
@@ -131,16 +130,55 @@ test1 = {
     'output': 4
 }
 
-# empty list
+# list not rotated at all
 test2 = {
+    'input': {
+        'nums': [1,2,3,4,7,8]
+    },
+    'output': 0
+}
+
+# list rotated once
+test3 = {
+    'input': {
+        'nums': [50, 2, 6, 7, 9, 11, 12]
+    },
+    'output': 1
+}
+
+# A list that was rotated n-1 times, where n is the size of the list.
+test4 = {
+    'input': {
+        'nums': [5, 6, 7, 9, 11, 14, 19, 25, 29, 3]
+    },
+    'output': 9
+}
+
+# A list that was rotated n times, where n is the size of the list
+test5 = {
+    'input': {
+        'nums': [1,2,3,4,7,8]
+    },
+    'output': 0
+}
+
+# An empty list.
+test6 = {
     'input': {
         'nums': []
     },
     'output': 0
 }
 
+# A list containing just one element.
+test7 = {
+    'input': {
+        'nums': [4]
+    },
+    'output': 0
+}
 
-tests =[test0, test1, test2]
+tests =[test0, test1, test2, test3, test4, test5, test6, test7]
 
 ### full tests ###
 
@@ -152,8 +190,10 @@ tests =[test0, test1, test2]
 
 from jovian.pythondsa import evaluate_test_case
 
+
 for i in range(0, len(tests)):
     evaluate_test_case(count_rotations_linear, tests[i])
+
 # evaluation tests
 #     nums = tests[i]['input']['nums']
 #     output = tests[i]['output']
